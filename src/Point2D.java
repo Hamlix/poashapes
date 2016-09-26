@@ -1,7 +1,8 @@
 /**
- * Created by Hamlix on 26/09/2016.
+ * Created by Hamlix on 19/09/2016.
  */
 public class Point2D {
+
     private double x;
     private double y;
 
@@ -14,19 +15,19 @@ public class Point2D {
         this.y = y;
     }
 
-    public void translate(double dx, double dy){
-        this.x=dx;
-        this.y=dy;
-    }
-    public boolean isOrigin(){
-        return x == 0 && y==0;
+    public boolean isOrigin() {
+        return (x == 0 && y == 0);
     }
 
+    public void translate(double dx, double dy) {
+        x += dx;
+        y += dy;
+    }
 
-    public double distance(Point2D other){
-        double dx= this.x - other.x;
-        double dy=this.y - other.y;
-        return Math.sqrt(dx*dx-dy*dy);
+    public double distance(Point2D other) {
+        final double dx = other.x - this.x;
+        final double dy = other.y - this.y;
+        return Math.sqrt(dx * dx + dy * dy);
     }
 
 
@@ -41,7 +42,7 @@ public class Point2D {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Point2D)) return false;
 
         Point2D point2D = (Point2D) o;
 
